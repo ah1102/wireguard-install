@@ -131,6 +131,8 @@ function installWireGuard() {
 		apt-get install -y wireguard-dkms wireguard-tools linux-headers-$(uname -r)
 		apt-get install -y iptables resolvconf qrencode
 		apt-get install -y -t buster-backports wireguard
+		# Turn on forwarding in sysctl.conf
+                # sed -i '/net.ipv4.ip_forward=1/s/^#//g' /etc/sysctl.conf
 	elif [[ ${OS} == 'fedora' ]]; then
 		if [[ ${VERSION_ID} -lt 32 ]]; then
 			dnf install -y dnf-plugins-core
