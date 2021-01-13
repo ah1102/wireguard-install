@@ -381,6 +381,22 @@ function uninstallWg() {
 		elif [[ ${OS} == 'arch' ]]; then
 			pacman -Rs --noconfirm wireguard-tools qrencode
 		fi
+		
+		#REMOVE USER CONFIG
+                # Home directory of the user, where the client configuration will be written
+                CLIENT_NAME=$(grep -E "^### Client" "/etc/wireguard/${SERVER_WG_NIC}.conf" | cut$
+
+                if [ -e "/home/${CLIENT_NAME}" ]; then # if $1 is a user name
+                        HOME_DIR="/home/${CLIENT_NAME}" 
+                elif [ "${SUDO_USER}" ]; then # if not, use SUDO_USER
+                        HOME_DIR="/home/${SUDO_USER}"
+                else # if not SUDO_USER, use /root
+                        HOME_DIR="/root" 
+                fi
+
+                echo "usr config delete: ${HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf"
+                # remove generated client file
+                rm -f "${HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf"
 
 		rm -rf /etc/wireguard
 		rm -f /etc/sysctl.d/wg.conf
