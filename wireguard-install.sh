@@ -367,7 +367,7 @@ function uninstallWg() {
 		if [[ ${OS} == 'ubuntu' ]]; then
 			apt-get autoremove --purge -y wireguard qrencode
 		elif [[ ${OS} == 'debian' ]]; then
-			apt-get autoremove --purge -y wireguard qrencode
+			apt-get autoremove --purge -y wireguard wireguard-dkms wireguard-tools qrencode
 		elif [[ ${OS} == 'fedora' ]]; then
 			dnf remove -y wireguard-tools qrencode
 			if [[ ${VERSION_ID} -lt 32 ]]; then
