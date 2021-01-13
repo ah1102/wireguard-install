@@ -31,6 +31,10 @@ curl -O https://raw.githubusercontent.com/angristan/wireguard-install/master/wir
 chmod +x wireguard-install.sh
 ./wireguard-install.sh
 ```
+or
+```
+ssh user@your.server 'sudo bash -s' < ./wireguard-install.sh
+```
 
 It will install WireGuard (kernel module and tools) on the server, configure it, create a systemd service and a client configuration file.
 
