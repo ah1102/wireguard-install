@@ -396,7 +396,7 @@ function uninstallWg() {
 
                 echo "usr config delete: ${HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf"
                 # remove generated client file
-                rm -f "${HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf"
+                rm -f ${HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf
 
 		rm -rf /etc/wireguard
 		rm -f /etc/sysctl.d/wg.conf
